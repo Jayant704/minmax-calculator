@@ -4,12 +4,15 @@
   <title>Min-Max for CCP</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="https://evinonline.in/favicon.ico">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="canonical" href="https://icons.getbootstrap.com/icons/heart-fill/">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+  <!-- As per eVIN records, 4121AA096M-Batch ID, This batch has not been received by our UT from the manufacturer since September 2021. -->
 
 <div class="container">
 	<div class="row">
@@ -17,6 +20,14 @@
     <div class="col-sm-6">
 		 <h4>Enter the Population</h4>
 		  <form>
+        <div class="form-group">
+          <label for="Total population">Total Population:</label>
+          <input type="text" class="form-control" step="00.01" id="tp" placeholder="Enter total polulation" name="tp" onkeyup="population();">
+        </div>
+        <div class="form-group">
+          <label for="Estimate no of Live birth">Estimate no. of Live birth:</label>
+          <input type="text" class="form-control" id="elb" placeholder="Enter estimate no of live birth" name="elb">
+        </div>
 		    <div class="form-group">
 		      <label for="Pregnant Women">Pregnant Women:</label>
 		      <input type="text" class="form-control" id="pw" placeholder="Enter Pregnant Women polulation" name="anc">
@@ -26,8 +37,9 @@
 		      <input type="text" class="form-control" id="infants" placeholder="Enter the polulation of infants" name="infants">
 		    </div>
 		    <input type="button" class="btn btn-default" onClick="submitBy()" Value="Submit">
-		  </form>
+		  </form>      
 		</div>
+
 	 <div class="col-sm-6">
 	 	 <table class="table table-hover">
      <thead>
@@ -121,6 +133,10 @@
     </tbody>
   </table>
  </div>
+  <p>1. Estimated No. of Live Birth = Total  Estimated Population X Crude Birth Rate/1000 <br>
+      2. Estimated No. of Infants 0-1 years = {Estimated No. of Live Births-(Estimated No. of Live Births X Infant Mortality Rate/1000)}<br>
+      3. Estimated No. of Pregnant Women = {Estimated No. of Live Births+(Estimated No. of Live Births X 0.1)}<br>
+      4. Estimated No. of Deliveries = {Estimated No. of Live Births+(Estimated No. of Live Births X Infant Mortality Rate/1000)}</p>
 </div>
 
 
@@ -230,9 +246,21 @@
     </tbody>
   </table>
 </div>
-		<script >  
+		<script> 
+
+          function population()  {
+           const tpop = document.getElementById("tp").value;
+           const enlb = Math.ceil((tpop * 14.9)/1000);
+           document.getElementById("elb").value = enlb;
+           const enlib = document.getElementById("elb").value;
+           const pgw =  (enlib*0.1);
+           const infant = Math.ceil(enlib - ((enlib * 16.3)/1000));
+           document.getElementById("pw").value = Math.ceil(pgw+enlb);
+           document.getElementById("infants").value = infant;     
+          }
+
             function submitBy() {  
-             pp = document.getElementById("infants").value;
+            pp = document.getElementById("infants").value;
        		 document.getElementById("bcg_ws").innerHTML = Math.ceil((pp * 2)/12);
        		 document.getElementById("bcg_ldts").innerHTML = Math.ceil(((pp * 2)/12)/4);
        		 document.getElementById("bcg_bfs").innerHTML = Math.ceil(((pp * 2)/12)/4);
@@ -296,7 +324,7 @@
 
        		}
 
- </script>  
+ </script> 
  <footer class="footer mt-auto py-3 bg-light">
     <div class="container">
 	    <p align="center">Made with <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-heart-fill" viewBox="0 0 16 16">
