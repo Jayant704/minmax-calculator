@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Min-Max for Primary stores</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="https://evinonline.in/favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h2 align="left">Minimum Maximum stock Calculator for Primary stores</h2>
+    </div>
+        <div class="col-sm-6">
+           <p> </p>
+           <h5 align="right"><a href="index.html"><button type="button" class="btn btn-primary">For CCPs</button></a></h5>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+	<div class="row">	 
+    <div class="col-sm-6">
+		 <h4>Enter the Population</h4>
+		  <form>
+        <div class="form-group">
+          <label for="Total population">Total Population:</label>
+          <input type="text" class="form-control" step="00.01" id="tp" placeholder="Enter total polulation" name="tp" onkeyup="population();">
+        </div>
+        <div class="form-group">
+          <label for="Estimate no of Live birth">Estimate no. of Live birth:</label>
+          <input type="text" class="form-control" id="elb" placeholder="Enter estimate no of live birth" name="elb">
+        </div>
+		    <div class="form-group">
+		      <label for="Pregnant Women">Pregnant Women:</label>
+		      <input type="text" class="form-control" id="pw" placeholder="Enter Pregnant Women polulation" name="anc">
+		    </div>
+		    <div class="form-group">
+		      <label for="Infants">Infants (0-1 years children):</label>
+		      <input type="text" class="form-control" id="infants" placeholder="Enter the polulation of infants" name="infants">
+		    </div>
+		    <input type="button" class="btn btn-default" onClick="submitBy()" Value="Submit">
+		  </form>      
+		</div>
+
+	 <div class="col-sm-6">
+	 	 <table class="table table-hover">
+     <thead>
+     	<tr>
+        	<th>Antigens</th>
+        	<th>Doses given in UIP</th>
+        	<th>Doses in a Vial</th>
+        	<th>Wastage rate (%)</th>
+        	<th>WMF</th>
+      	</tr>
+  	</thead>
+  	<tbody>
+      <tr>
+        <td>BCG</td>
+        <td>1</td>
+        <td>10</td>
+        <td>50</td>
+        <td>2</td>
+      </tr>
+       <tr>
+        <td>bOPV</td>
+        <td>5</td>
+        <td>20</td>
+        <td>10</td>
+        <td>1.11</td>
+      </tr>
+
+       <tr>
+        <td>DPT</td>
+		<td>2</td>
+        <td>10</td>
+        <td>10</td>
+        <td>1.11</td>
+      </tr>
+
+       <tr>
+        <td>fIPV</td>
+        <td>2</td>
+        <td>25</td>
+        <td>10</td>
+        <td>1.11</td>
+      </tr>
+
+       <tr>
+        <td>Hepatitis B</td>
+        <td>1</td>
+        <td>10</td>
+        <td>10</td>
+        <td>1.11</td>
+      </tr>
+
+          <tr>
+        <td>MR 5</td>
+        <td>2</td>
+        <td>5</td>
+        <td>25</td>
+        <td>1.33</td>
+      </tr>
+
+      <tr>
+        <td>PCV 5</td>
+        <td>3</td>
+        <td>5</td>
+        <td>10</td>
+        <td>1.11</td>
+      </tr>
+
+      <tr>
+        <td>Pentavalent </td>
+        <td>3</td>
+        <td>10</td>
+        <td>10</td>
+        <td>1.11</td>
+      </tr>
+
+        <tr>
+        <td>Rotavac</td>
+        <td>3</td>
+        <td>10</td>
+        <td>25</td>
+        <td>1.33</td>
+      </tr>
+
+       <tr>
+        <td>Td </td>
+        <td>3.5</td>
+        <td>10</td>
+        <td>10</td>
+        <td>1.11</td>
+      </tr>
+    </tbody>
+  </table>
+ </div>
+  <p>1. Estimated No. of Live Birth = Total  Estimated Population X Crude Birth Rate/1000 <br>
+      2. Estimated No. of Infants 0-1 years = {Estimated No. of Live Births-(Estimated No. of Live Births X Infant Mortality Rate/1000)}<br>
+      3. Estimated No. of Pregnant Women = {Estimated No. of Live Births+(Estimated No. of Live Births X 0.1)}<br>
+      4. Estimated No. of Deliveries = {Estimated No. of Live Births+(Estimated No. of Live Births X Infant Mortality Rate/1000)}</p>
+</div>
+
+
+
+<div class="container">
+  <h2>Min Max details</h2>     
+  <table class="table table-hover">
+     <thead>
+     	<tr>
+        	<th>Antigens</th>
+        	<th>Working stock</th>
+        	<th>Lead time</th>
+        	<th>Buffer stock</th>
+        	<th>Minimum Stock</th>
+        	<th>Maximum stock</th>
+      	</tr>
+  	</thead>
+  	<tbody>
+      <tr>
+        <td>BCG</td>
+        <td><span id = "bcg_ws"></span></td>
+        <td><span id = "bcg_ldts"></span></td>
+         <td><span id = "bcg_bfs"></span></td>
+          <td><span id = "bcg_min"></span></td>
+           <td><span id = "bcg_max"></span></td>
+      </tr>
+       <tr>
+        <td>bOPV</td>
+        <td><span id = "bopv_ws"></span></td>
+        <td><span id = "bopv_ldts"></span></td>
+         <td><span id = "bopv_bfs"></span></td>
+          <td><span id = "bopv_min"></span></td>
+           <td><span id = "bopv_max"></span></td>
+      </tr>
+
+       <tr>
+        <td>DPT</td>
+        <td><span id = "dpt_ws"></span></td>
+        <td><span id = "dpt_ldts"></span></td>
+         <td><span id = "dpt_bfs"></span></td>
+          <td><span id = "dpt_min"></span></td>
+           <td><span id = "dpt_max"></span></td>
+      </tr>
+
+       <tr>
+        <td>fIPV</td>
+        <td><span id = "fipv_ws"></span></td>
+        <td><span id = "fipv_ldts"></span></td>
+         <td><span id = "fipv_bfs"></span></td>
+          <td><span id = "fipv_min"></span></td>
+           <td><span id = "fipv_max"></span></td>
+      </tr>
+
+       <tr>
+        <td>Hepatitis B</td>
+        <td><span id = "hepb_ws"></span></td>
+        <td><span id = "hepb_ldts"></span></td>
+         <td><span id = "hepb_bfs"></span></td>
+          <td><span id = "hepb_min"></span></td>
+           <td><span id = "hepb_max"></span></td>
+      </tr>
+
+          <tr>
+        <td>MR 5</td>
+        <td><span id = "mr_ws"></span></td>
+        <td><span id = "mr_ldts"></span></td>
+         <td><span id = "mr_bfs"></span></td>
+          <td><span id = "mr_min"></span></td>
+           <td><span id = "mr_max"></span></td>
+      </tr>
+
+      <tr>
+        <td>PCV 5</td>
+        <td><span id = "pcv_ws"></span></td>
+        <td><span id = "pcv_ldts"></span></td>
+         <td><span id = "pcv_bfs"></span></td>
+          <td><span id = "pcv_min"></span></td>
+           <td><span id = "pcv_max"></span></td>
+      </tr>
+
+      <tr>
+        <td>Pentavalent </td>
+        <td><span id = "penta_ws"></span></td>
+        <td><span id = "penta_ldts"></span></td>
+         <td><span id = "penta_bfs"></span></td>
+          <td><span id = "penta_min"></span></td>
+           <td><span id = "penta_max"></span></td>
+      </tr>
+
+        <tr>
+        <td>Rotavac</td>
+        <td><span id = "rvv_ws"></span></td>
+        <td><span id = "rvv_ldts"></span></td>
+         <td><span id = "rvv_bfs"></span></td>
+          <td><span id = "rvv_min"></span></td>
+           <td><span id = "rvv_max"></span></td>
+      </tr>
+
+       <tr>
+        <td>Td </td>
+        <td><span id = "td_ws"></span></td>
+        <td><span id = "td_ldts"></span></td>
+         <td><span id = "td_bfs"></span></td>
+          <td><span id = "td_min"></span></td>
+           <td><span id = "td_max"></span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+		<script> 
+
+          function population()  {
+           const tpop = document.getElementById("tp").value;
+           const enlb = Math.ceil((tpop * 14.9)/1000);
+           document.getElementById("elb").value = enlb;
+           const enlib = document.getElementById("elb").value;
+           const pgw =  (enlib*0.1);
+           const infant = Math.ceil(enlib - ((enlib * 16.3)/1000));
+           document.getElementById("pw").value = Math.ceil(pgw+enlb);
+           document.getElementById("infants").value = infant;     
+          }
+
+            function submitBy() {  
+            pp = document.getElementById("infants").value;
+       		 document.getElementById("bcg_ws").innerHTML = Math.ceil((pp * 2)/6);
+       		 document.getElementById("bcg_ldts").innerHTML = Math.ceil(((pp * 2)/6)/8);
+       		 document.getElementById("bcg_bfs").innerHTML = Math.ceil(((pp * 2)/6)/4);
+       		 document.getElementById("bcg_min").innerHTML = Math.ceil((((pp * 2)/12)* 0.75)/10) * 10;
+       		 document.getElementById("bcg_max").innerHTML = Math.ceil((((pp * 2)/12) * 2.75)/10) *10;
+
+       		 document.getElementById("bopv_ws").innerHTML = Math.ceil((pp * 5.55)/6);
+       		 document.getElementById("bopv_ldts").innerHTML = Math.ceil(((pp * 5.55)/6)/8);
+       		 document.getElementById("bopv_bfs").innerHTML = Math.ceil(((pp * 5.55)/6)/4);
+       		 document.getElementById("bopv_min").innerHTML = Math.ceil((((pp * 5.55)/12) * 0.75)/20)* 20;
+       		 document.getElementById("bopv_max").innerHTML = Math.ceil((((pp * 5.55)/12) * 2.75)/20) * 20;
+
+       		 document.getElementById("dpt_ws").innerHTML = Math.ceil((pp * 2.22)/6);
+       		 document.getElementById("dpt_ldts").innerHTML = Math.ceil(((pp * 2.22)/6)/8);
+       		 document.getElementById("dpt_bfs").innerHTML = Math.ceil(((pp * 2.22)/6)/4);
+       		 document.getElementById("dpt_min").innerHTML = Math.ceil((((pp * 2.22)/12)* 0.75)/10) *10;
+       		 document.getElementById("dpt_max").innerHTML = Math.ceil((((pp * 2.22)/12) * 2.75)/10)*10;
+
+       		 document.getElementById("fipv_ws").innerHTML = Math.ceil((pp * 3.33)/6);
+       		 document.getElementById("fipv_ldts").innerHTML = Math.ceil(((pp * 3.33)/6)/8);
+       		 document.getElementById("fipv_bfs").innerHTML = Math.ceil(((pp * 3.33)/6)/4);
+       		 document.getElementById("fipv_min").innerHTML = Math.ceil((((pp * 3.33)/12) * 0.75)/25) * 25;
+       		 document.getElementById("fipv_max").innerHTML = Math.ceil((((pp * 3.33)/12) * 2.75)/25) * 25;
+
+       		 document.getElementById("hepb_ws").innerHTML = Math.ceil((pp * 1.11)/6);
+       		 document.getElementById("hepb_ldts").innerHTML = Math.ceil(((pp * 1.11)/6)/8);
+       		 document.getElementById("hepb_bfs").innerHTML = Math.ceil(((pp * 1.11)/6)/4);
+       		 document.getElementById("hepb_min").innerHTML = Math.ceil((((pp * 1.11)/12) * 0.75)/10) *10;
+       		 document.getElementById("hepb_max").innerHTML = Math.ceil((((pp * 1.11)/12) * 2.75)/10) *10;
+
+       		 document.getElementById("mr_ws").innerHTML = Math.ceil((pp * 2.66)/6);
+       		 document.getElementById("mr_ldts").innerHTML = Math.ceil(((pp * 2.66)/6)/8);
+       		 document.getElementById("mr_bfs").innerHTML = Math.ceil(((pp * 2.66)/6)/4);
+       		 document.getElementById("mr_min").innerHTML = Math.ceil((((pp * 2.66)/12) * 0.75)/5) *5;
+       		 document.getElementById("mr_max").innerHTML = Math.ceil((((pp * 2.66)/12) * 2.75)/5)*5;
+
+       		 document.getElementById("pcv_ws").innerHTML = Math.ceil((pp * 3.33)/6);
+       		 document.getElementById("pcv_ldts").innerHTML = Math.ceil(((pp * 3.33)/6)/8);
+       		 document.getElementById("pcv_bfs").innerHTML = Math.ceil(((pp * 3.33)/6)/4);
+       		 document.getElementById("pcv_min").innerHTML = Math.ceil((((pp * 3.33)/12) * 0.75)/5) *5;
+       		 document.getElementById("pcv_max").innerHTML = Math.ceil((((pp * 3.33)/12) * 2.75)/5) *5;
+
+       		 document.getElementById("penta_ws").innerHTML = Math.ceil((pp * 3.33)/6);
+       		 document.getElementById("penta_ldts").innerHTML = Math.ceil(((pp * 3.33)/6)/8);
+       		 document.getElementById("penta_bfs").innerHTML = Math.ceil(((pp * 3.33)/6)/4);
+       		 document.getElementById("penta_min").innerHTML = Math.ceil((((pp * 3.33)/12) * 0.75)/10) *10;
+       		 document.getElementById("penta_max").innerHTML = Math.ceil((((pp * 3.33)/12) * 2.75)/10) *10;
+
+			     document.getElementById("rvv_ws").innerHTML = Math.ceil((pp * 3.99)/6);
+       		 document.getElementById("rvv_ldts").innerHTML = Math.ceil(((pp * 3.99)/6)/8);
+       		 document.getElementById("rvv_bfs").innerHTML = Math.ceil(((pp * 3.99)/6)/4);
+       		 document.getElementById("rvv_min").innerHTML = Math.ceil((((pp * 3.99)/12) * 0.75)/10) *10;
+       		 document.getElementById("rvv_max").innerHTML = Math.ceil((((pp * 3.99)/12) * 2.75)/10) *10;
+
+       		 pw = document.getElementById("pw").value;
+       		 document.getElementById("td_ws").innerHTML = Math.ceil((pw * 3.885)/6);
+       		 document.getElementById("td_ldts").innerHTML = Math.ceil(((pw * 3.885)/6)/8);
+       		 document.getElementById("td_bfs").innerHTML = Math.ceil(((pw * 3.885)/6)/4);
+       		 document.getElementById("td_min").innerHTML = Math.ceil((((pw * 3.885)/12) * 0.75)/10) *10;
+       		 document.getElementById("td_max").innerHTML = Math.ceil((((pw * 3.885)/12) * 2.75)/10) *10;
+
+       		}
+
+ </script>  
+ <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <p align="center">Made with <i class='fas fa-heart' style='color:red'></i> by Jayant</p>
+    </div>
+  </footer>
+
+</body>
+</html>
