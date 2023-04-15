@@ -269,69 +269,68 @@
 
             function submitBy() {  
             pp = document.getElementById("infants").value;
-       		 document.getElementById("bcg_ws").innerHTML = Math.ceil((pp * 2)/12);
-       		 document.getElementById("bcg_ldts").innerHTML = Math.ceil(((pp * 2)/12)/4);
-       		 document.getElementById("bcg_bfs").innerHTML = Math.ceil(((pp * 2)/12)/4);
+       		 document.getElementById("bcg_ws").innerHTML = Math.ceil(((pp * 2)/12)/10)* 10;
+       		 document.getElementById("bcg_ldts").innerHTML = Math.ceil((((pp * 2)/12)/4)/10) * 10;
+       		 document.getElementById("bcg_bfs").innerHTML = Math.ceil((((pp * 2)/12)/4)/10) * 10;
        		 document.getElementById("bcg_min").innerHTML = Math.ceil((((pp * 2)/12)/2)/10) * 10;
        		 document.getElementById("bcg_max").innerHTML = Math.ceil((((pp * 2)/12) * 1.5)/10) *10;
 
-       		 document.getElementById("bopv_ws").innerHTML = Math.ceil((pp * 5.55)/12);
-       		 document.getElementById("bopv_ldts").innerHTML = Math.ceil(((pp * 5.55)/12)/4);
-       		 document.getElementById("bopv_bfs").innerHTML = Math.ceil(((pp * 5.55)/12)/4);
+       		 document.getElementById("bopv_ws").innerHTML = Math.ceil(((pp * 5.55)/12)/20) * 20;
+       		 document.getElementById("bopv_ldts").innerHTML = Math.ceil((((pp * 5.55)/12)/4)/20) * 20;
+       		 document.getElementById("bopv_bfs").innerHTML = Math.ceil((((pp * 5.55)/12)/4)/20)* 20;
        		 document.getElementById("bopv_min").innerHTML = Math.ceil((((pp * 5.55)/12)/2)/20)* 20;
        		 document.getElementById("bopv_max").innerHTML = Math.ceil((((pp * 5.55)/12) * 1.5)/20) * 20;
 
-       		 document.getElementById("dpt_ws").innerHTML = Math.ceil((pp * 2.22)/12);
-       		 document.getElementById("dpt_ldts").innerHTML = Math.ceil(((pp * 2.22)/12)/4);
-       		 document.getElementById("dpt_bfs").innerHTML = Math.ceil(((pp * 2.22)/12)/4);
+       		 document.getElementById("dpt_ws").innerHTML = Math.ceil(((pp * 2.22)/12)/10) *10;
+       		 document.getElementById("dpt_ldts").innerHTML = Math.ceil((((pp * 2.22)/12)/4)/10) *10;
+       		 document.getElementById("dpt_bfs").innerHTML = Math.ceil((((pp * 2.22)/12)/4)/10) *10;
        		 document.getElementById("dpt_min").innerHTML = Math.ceil((((pp * 2.22)/12)/2)/10) *10;
        		 document.getElementById("dpt_max").innerHTML = Math.ceil((((pp * 2.22)/12) * 1.5)/10)*10;
 
-       		 document.getElementById("fipv_ws").innerHTML = Math.ceil((pp * 3.33)/12);
-       		 document.getElementById("fipv_ldts").innerHTML = Math.ceil(((pp * 3.33)/12)/4);
-       		 document.getElementById("fipv_bfs").innerHTML = Math.ceil(((pp * 3.33)/12)/4);
+       		 document.getElementById("fipv_ws").innerHTML = Math.ceil(((pp * 3.33)/12)/25) * 25;
+       		 document.getElementById("fipv_ldts").innerHTML = Math.ceil((((pp * 3.33)/12)/4)/25) * 25;
+       		 document.getElementById("fipv_bfs").innerHTML = Math.ceil((((pp * 3.33)/12)/4)/25) * 25;
        		 document.getElementById("fipv_min").innerHTML = Math.ceil((((pp * 3.33)/12)/2)/25) * 25;
        		 document.getElementById("fipv_max").innerHTML = Math.ceil((((pp * 3.33)/12) * 1.5)/25) * 25;
 
-       		 document.getElementById("hepb_ws").innerHTML = Math.ceil((pp * 1.11)/12);
-       		 document.getElementById("hepb_ldts").innerHTML = Math.ceil(((pp * 1.11)/12)/4);
-       		 document.getElementById("hepb_bfs").innerHTML = Math.ceil(((pp * 1.11)/12)/4);
+       		 document.getElementById("hepb_ws").innerHTML = Math.ceil(((pp * 1.11)/12)/10) *10;
+       		 document.getElementById("hepb_ldts").innerHTML = Math.ceil((((pp * 1.11)/12)/4)/10) *10;
+       		 document.getElementById("hepb_bfs").innerHTML = Math.ceil((((pp * 1.11)/12)/4)/10) *10;
        		 document.getElementById("hepb_min").innerHTML = Math.ceil((((pp * 1.11)/12)/2)/10) *10;
        		 document.getElementById("hepb_max").innerHTML = Math.ceil((((pp * 1.11)/12) * 1.5)/10) *10;
 
-       		 document.getElementById("mr_ws").innerHTML = Math.ceil((pp * 2.66)/12);
-       		 document.getElementById("mr_ldts").innerHTML = Math.ceil(((pp * 2.66)/12)/4);
-       		 document.getElementById("mr_bfs").innerHTML = Math.ceil(((pp * 2.66)/12)/4);
+       		 document.getElementById("mr_ws").innerHTML = Math.ceil(((pp * 2.66)/12)/5)*5;
+       		 document.getElementById("mr_ldts").innerHTML = Math.ceil((((pp * 2.66)/12)/4)/5)*5;
+       		 document.getElementById("mr_bfs").innerHTML = Math.ceil((((pp * 2.66)/12)/4)/5)*5;
        		 document.getElementById("mr_min").innerHTML = Math.ceil((((pp * 2.66)/12)/2)/5) *5;
        		 document.getElementById("mr_max").innerHTML = Math.ceil((((pp * 2.66)/12) * 1.5)/5)*5;
 
-       		 document.getElementById("pcv_ws").innerHTML = Math.ceil((pp * 3.33)/12);
-       		 document.getElementById("pcv_ldts").innerHTML = Math.ceil(((pp * 3.33)/12)/4);
-       		 document.getElementById("pcv_bfs").innerHTML = Math.ceil(((pp * 3.33)/12)/4);
+       		 document.getElementById("pcv_ws").innerHTML = Math.ceil(((pp * 3.33)/12)/5) *5;
+       		 document.getElementById("pcv_ldts").innerHTML = Math.ceil((((pp * 3.33)/12)/4)/5) *5;
+       		 document.getElementById("pcv_bfs").innerHTML = Math.ceil((((pp * 3.33)/12)/4)/5) *5;
        		 document.getElementById("pcv_min").innerHTML = Math.ceil((((pp * 3.33)/12)/2)/5) *5;
        		 document.getElementById("pcv_max").innerHTML = Math.ceil((((pp * 3.33)/12) * 1.5)/5) *5;
 
-       		 document.getElementById("penta_ws").innerHTML = Math.ceil((pp * 3.33)/12);
-       		 document.getElementById("penta_ldts").innerHTML = Math.ceil(((pp * 3.33)/12)/4);
-       		 document.getElementById("penta_bfs").innerHTML = Math.ceil(((pp * 3.33)/12)/4);
+       		 document.getElementById("penta_ws").innerHTML = Math.ceil(((pp * 3.33)/12)/10) *10;
+       		 document.getElementById("penta_ldts").innerHTML = Math.ceil((((pp * 3.33)/12)/4)/10) *10;
+       		 document.getElementById("penta_bfs").innerHTML = Math.ceil((((pp * 3.33)/12)/4)/10) *10;
        		 document.getElementById("penta_min").innerHTML = Math.ceil((((pp * 3.33)/12)/2)/10) *10;
        		 document.getElementById("penta_max").innerHTML = Math.ceil((((pp * 3.33)/12) * 1.5)/10) *10;
 
-			 document.getElementById("rvv_ws").innerHTML = Math.ceil((pp * 3.99)/12);
-       		 document.getElementById("rvv_ldts").innerHTML = Math.ceil(((pp * 3.99)/12)/4);
-       		 document.getElementById("rvv_bfs").innerHTML = Math.ceil(((pp * 3.99)/12)/4);
+			     document.getElementById("rvv_ws").innerHTML = Math.ceil(((pp * 3.99)/12)/10) *10;
+       		 document.getElementById("rvv_ldts").innerHTML = Math.ceil((((pp * 3.99)/12)/4)/10) *10;
+       		 document.getElementById("rvv_bfs").innerHTML = Math.ceil((((pp * 3.99)/12)/4)/10) *10;
        		 document.getElementById("rvv_min").innerHTML = Math.ceil((((pp * 3.99)/12)/2)/10) *10;
        		 document.getElementById("rvv_max").innerHTML = Math.ceil((((pp * 3.99)/12) * 1.5)/10) *10;
 
        		 pw = document.getElementById("pw").value;
-       		 document.getElementById("td_ws").innerHTML = Math.ceil((pw * 3.885)/12);
-       		 document.getElementById("td_ldts").innerHTML = Math.ceil(((pw * 3.885)/12)/4);
-       		 document.getElementById("td_bfs").innerHTML = Math.ceil(((pw * 3.885)/12)/4);
+       		 document.getElementById("td_ws").innerHTML = Math.ceil(((pw * 3.885)/12)/10) *10;
+       		 document.getElementById("td_ldts").innerHTML = Math.ceil((((pw * 3.885)/12)/4)/10) *10;
+       		 document.getElementById("td_bfs").innerHTML = Math.ceil((((pw * 3.885)/12)/4)/10) *10;
        		 document.getElementById("td_min").innerHTML = Math.ceil((((pw * 3.885)/12)/2)/10) *10;
        		 document.getElementById("td_max").innerHTML = Math.ceil((((pw * 3.885)/12) * 1.5)/10) *10;
 
        		}
-
  </script>  
  <footer class="footer mt-auto py-3 bg-light">
     <div class="container">
