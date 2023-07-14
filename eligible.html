@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Eligible dates for vaccination</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="https://evinonline.in/favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+      <h2 align="center">Eligible dates for vaccination of infants and Pregnant Women</h2>
+    </div>
+</div>
+
+<div class="container">
+	<div class="row">	 
+    <div class="col-sm-6">
+		<h4>For Infants from date of birth(DOB)</h4>
+		  <form>
+        <div class="form-group">
+          <label for="date of birth">Date of Birth of Infant</label>
+          <input type="date" class="form-control" step="00.01" id="birthdate" placeholder="Enter date of birth" name="birthdate" onchange="setSecondDate();">
+        </div>
+        <div class="form-group">
+          <label for="Estimate no of Live birth">Eligible date for 6th week dose(42 days)</label>
+          <input type="date" class="form-control" id="sixthweekdose" placeholder="Enter 6th weeks vaacination date" name="sixthweekdose" onchange="setThirdDate();">
+        </div>
+		    <div class="form-group">
+		      <label for="Pregnant Women">Eligible date for 10th week dose(70 days)</label>
+		      <input type="date" class="form-control" id="tenweekdose" placeholder="Enter 10th weeks vaacination date" name="tenweekdose" onchange="setForthDate();">
+		    </div>
+		    <div class="form-group">
+		      <label for="Infants">Eligible date for 14th week dose(98 days)</label>
+		      <input type="date" class="form-control" id="forteenweekdose" placeholder="Enter 14th weeks vaacination date" name="infants" onchange="setFifthDate();">
+		    </div>
+         <div class="form-group">
+          <label for="Infants">Eligible date for 9th month dose (262 days)</label>
+          <input type="date" class="form-control" id="ninthmonthdose" name="infants">
+        </div>
+		    <!-- <input type="button" class="btn btn-default" onClick="submitBy()" Value="Submit"> -->
+		  </form>      
+		</div>
+       <div class="col-sm-6">
+     <table class="table table-hover" border="1">
+          <tr>
+            <th>Birth</th>
+            <th>6 W</th>
+            <th>10 W</th>
+            <th>14 W</th>
+            <th>9 M</th>
+            <th>16-24 M</th>
+            <th>5-6 Y</th>
+          </tr>
+          <tr>
+            <td>OPV-0</td>
+            <td>OPV-1</td>
+            <td>OPV-2</td>
+            <td>OPV-3</td>
+            <td>MR-1</td>
+            <td>OPV <br>Booster</td>
+            <td>DPT <br>Booster 2</td>
+          </tr>
+          <tr>
+            <td>Hep B</td>
+            <td>Penta-1</td>
+            <td>Penta-2</td>
+            <td>Penta-3</td>
+            <td>PCV <br>Booster</td>
+            <td>MR-2</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>BCG</td>
+            <td>RVV-1</td>
+            <td>RVV-2</td>
+            <td>RVV-3</td>
+            <td>fIPV-3</td>
+            <td>DPT <br>Booster-1</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>PCV-1</td>
+            <td></td>
+            <td>PCV-3</td>
+            <td>Vit A-1</td>
+            <td>Vit A-2</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>fIPV-1</td>
+            <td></td>
+            <td>fIPV-2</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="7"><p style="background-color:yellow;"><i>**Note: W for Weeks, M for Months, Y for Years</i></p></td>
+          </tr>
+        </table>
+  </table>
+ </div>
+  </div>
+</div>
+<hr>
+<div class="container">
+  <div class="row">  
+    <div class="col-sm-6">
+      <h4>Get Estimated date of delivery from LMP</h4> 
+      <form>
+        <div class="form-group">
+          <label for="lmp">Last date of LMP</label>
+          <input type="date" class="form-control" id="lmp"name="lmp" onchange="setEdd();">
+        </div>
+        <div class="form-group">
+          <label for="edd">Estimate date of delivery (280 days from LMP)</label>
+          <input type="date" class="form-control" id="edd" name="edd">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+		<script> 
+    function setSecondDate() {    
+    var date = new Date(document.getElementById("birthdate").value);
+    date.setDate(date.getDate() + parseInt(42));
+    document.getElementById("sixthweekdose").valueAsDate = date;
+    date.setDate(date.getDate() + parseInt(28));
+    document.getElementById("tenweekdose").valueAsDate = date;
+    date.setDate(date.getDate() + parseInt(28));
+    document.getElementById("forteenweekdose").valueAsDate = date;
+    date.setDate(date.getDate() + parseInt(164));
+    document.getElementById("ninthmonthdose").valueAsDate = date;
+    }
+
+    function setThirdDate() {    
+    var date = new Date(document.getElementById("sixthweekdose").value);
+    date.setDate(date.getDate() + parseInt(28));
+    document.getElementById("tenweekdose").valueAsDate = date;
+    date.setDate(date.getDate() + parseInt(28));
+    document.getElementById("forteenweekdose").valueAsDate = date;
+    date.setDate(date.getDate() + parseInt(164));
+    document.getElementById("ninthmonthdose").valueAsDate = date;
+    }
+
+    function setForthDate() {    
+    var date = new Date(document.getElementById("tenweekdose").value);
+    date.setDate(date.getDate() + parseInt(28));
+    document.getElementById("forteenweekdose").valueAsDate = date;
+    date.setDate(date.getDate() + parseInt(164));
+    document.getElementById("ninthmonthdose").valueAsDate = date;
+    }
+
+    function setFifthDate() {    
+    var date = new Date(document.getElementById("forteenweekdose").value);
+    date.setDate(date.getDate() + parseInt(164));
+    document.getElementById("ninthmonthdose").valueAsDate = date;
+    }
+
+    function setEdd() {    
+    var date = new Date(document.getElementById("lmp").value);
+    date.setDate(date.getDate() + parseInt(280));
+    document.getElementById("edd").valueAsDate = date;
+    }
+
+ </script>  
+ <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <p align="center">Made with <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-heart-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+</svg> by Jayant</p>
+    </div>
+  </footer>
+
+</body>
+</html>
