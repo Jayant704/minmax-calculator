@@ -1,8 +1,44 @@
-<form>
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname">
-  <input type="file" id="selfie" capture="user" accept="image/*,video/*">
-  <input type="file" id="photo" capture="environment" accept="image/*,video/*"> 
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Camera Access</title>
+  <style>
+    video {
+      width: 100%;
+      max-width: 500px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Open Camera (Webcam)</h2>
+
+  <!-- Video element to show camera -->
+  <video id="camera" autoplay playsinline></video><br>
+
+  <!-- Button to start camera -->
+  <button onclick="startCamera()">Open Camera</button>
+
+  <script>
+    const video = document.getElementById('camera');
+
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+      } catch (err) {
+        alert('Error accessing camera: ' + err.message);
+      }
+    }
+  </script>
+
+</body>
+</html>
